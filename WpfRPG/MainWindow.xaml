@@ -98,7 +98,21 @@
                                                 Binding="{Binding Price}"
                                                 Width="Auto" />
                         </DataGrid.Columns>
-                        
+                    </DataGrid>
+                </TabItem>
+                
+                <TabItem Header="Quests">
+                    <DataGrid ItemsSource="{Binding CurrentPlayer.Quests}"
+                              AutoGenerateColumns="False"
+                              HeadersVisibility="Column">
+                        <DataGrid.Columns> <!--Binding explained at bottom-->
+                            <DataGridTextColumn Header="Name"
+                                                Binding="{Binding PlayerQuest.Name}"
+                                                Width="*" />
+                            <DataGridTextColumn Header="Done?"
+                                                Binding="{Binding IsCompleted}"
+                                                Width="Auto" />
+                        </DataGrid.Columns>
                     </DataGrid>
                 </TabItem>
             </TabControl>
@@ -146,3 +160,10 @@
         </Grid>
     </Grid>
 </Window>
+
+<!--The CurrentPlayer is a property of the GameSession.cs and it's DataType is Player. 
+    The Player object has property called quests which is a list of new questStatus objects
+    The QuestStatus object has a PlayerQuest property and it's DataType is Quest
+    The Quest class has a property "Name. 
+    So we are binding to the PlayerQuest property on the Quest object and we are
+    displaying the Name of the PlayerQuest object"-->
