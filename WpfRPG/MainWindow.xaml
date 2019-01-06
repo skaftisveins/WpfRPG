@@ -23,7 +23,7 @@
 
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Menu" Background="AliceBlue" />
 
-        <Grid Grid.Row="1" Grid.Column="0" Background="HotPink">
+        <Grid Grid.Row="1" Grid.Column="0" Background="Bisque">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
