@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Engine.Factories;
+﻿using Engine.Factories;
 using Engine.Models;
+using System;
+using System.Linq;
 
 namespace Engine.ViewModels
 {
     public class GameSession : BaseNotificationClass
     {
         private Location _currentLocation;
+        private Monster _currentMonster;
 
-        public Player CurrentPlayer { get; set; }
         public World CurrentWorld { get; set; }
+        public Player CurrentPlayer { get; set; }
+
         public Location CurrentLocation
         {
             get { return _currentLocation; }
@@ -29,10 +27,26 @@ namespace Engine.ViewModels
                 OnPropertyChanged(nameof(HasLocationToSouth));
 
                 GivePlayerQuestsAtLocation();
+                GetMonsterAtLocation();
             }
         }
 
-        
+        public Monster CurrentMonster
+        {
+            get { return _currentMonster; }
+            set
+            {
+                _currentMonster = value;
+
+                OnPropertyChanged(nameof(CurrentMonster));
+                OnPropertyChanged(nameof(HasMonster));
+            }
+        }
+
+        private void GetMonsterAtLocation()
+        {
+            CurrentMonster = CurrentLocation.GetMonster();
+        }
 
         public bool HasLocationToNorth
         {
@@ -66,6 +80,8 @@ namespace Engine.ViewModels
             }
         }
 
+        public bool HasMonster => CurrentMonster != null;
+
         public GameSession()
         {
             CurrentPlayer = new Player
@@ -80,7 +96,7 @@ namespace Engine.ViewModels
 
             CurrentWorld = WorldFactory.CreateWorld();
 
-            CurrentLocation = CurrentWorld.LocationAt(0, -1);
+            CurrentLocation = CurrentWorld.LocationAt(0, 0);
 
         }
 
