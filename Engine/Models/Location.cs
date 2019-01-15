@@ -1,9 +1,6 @@
 ﻿using Engine.Factories;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Engine.Models
 {
@@ -18,6 +15,8 @@ namespace Engine.Models
 
         public List<MonsterEncounter> MonstersHere { get; set; } =
             new List<MonsterEncounter>();
+
+        public Trader TraderHere { get; set; }
 
         public void AddMonster(int monsterID, int chanceOfEncountering)
         {
