@@ -28,6 +28,7 @@
         <!-- Menu -->
         <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Content="Menu" Background="AliceBlue" />
 
+        <!-- Player stats -->
         <Grid Grid.Row="1" Grid.Column="0" Background="Bisque">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -224,7 +225,7 @@
                         Visibility="{Binding HasLocationToWest,
                         Converter={StaticResource BooleanToVisibility}}" />
                 
-                <Button Grid.Row="1" Grid.Column="1" Content="Trade"
+                <Button Grid.Row="1" Grid.Column="1" Content="Trade" Click="OnClick_DisplayTradeScreen"
                         Visibility="{Binding HasTrader,
                         Converter={StaticResource BooleanToVisibility}}"/>
                 
