@@ -23,7 +23,7 @@ namespace WpfRPG
             if(item != null)
             {
                 Session.CurrentPlayer.Gold += item.Price;
-                Session.CurrentTrader.AddItemToInvetory(item);
+                Session.CurrentTrader.AddItemToInventory(item);
                 Session.CurrentPlayer.RemoveItemFromInventory(item);
             }
         }
